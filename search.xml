@@ -3,23 +3,13 @@
   <entry>
     <title>Perceptron</title>
     <url>/2021/07/18/Perceptron/</url>
-    <content><![CDATA[<p><head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-            }
-        });
-    </script>
-</head></p>
-<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
+    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
 <script type="math/tex; mode=display">f(x)=\text{sign}(w\cdot x+b)</script><p>从公式以及映射的定义域及值域来看,感知机是一个判别模型(二分类模型).感知机的目标是学习到一个分离超平面将所有目标点正确划分.<br><span id="more"></span></p>
 <h3 id="数据集的线性可分性"><a href="#数据集的线性可分性" class="headerlink" title="数据集的线性可分性"></a>数据集的线性可分性</h3><p>如果存在某个超平面,将数据集的正样本点与负样本点完全划分开,则称这个数据集是线性可分的.</p>
 <h3 id="感知机的学习策略"><a href="#感知机的学习策略" class="headerlink" title="感知机的学习策略"></a>感知机的学习策略</h3><p>损失函数的选择:<br>    误分类点的数目:直观,但是并不连续可导<br>    实际选择的损失函数:$M$为误分类的点的集合</p>
 <script type="math/tex; mode=display">L=-\sum_{x_i\in M}y_i(\omega\cdot x_i+b)</script><h3 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h3><p>由损失函数可知:</p>
-<script type="math/tex; mode=display">\nabla_\omega L(\omega,b)=-\sum_{x_i\in M}y_ix_i</script><script type="math/tex; mode=display">\nabla_b L(\omega,b)=-\sum_{x_i\in M}y_i</script><p>故参数更新方法为(梯度下降):</p>
+<pre><code>$$\nabla_\omega L(\omega,b)=-\sum_&#123;x_i\in M&#125;y_ix_i$$
+</code></pre><script type="math/tex; mode=display">\nabla_b L(\omega,b)=-\sum_{x_i\in M}y_i</script><p>故参数更新方法为(梯度下降):</p>
 <script type="math/tex; mode=display">\omega\leftarrow\omega + \eta y_ix_i</script><script type="math/tex; mode=display">b\leftarrow b+\eta y_i</script><p>几何意义上来看,是不断调整超平面位置向误分类点移动的过程.</p>
 <h3 id="感知机学习算法的收敛性"><a href="#感知机学习算法的收敛性" class="headerlink" title="感知机学习算法的收敛性"></a>感知机学习算法的收敛性</h3><p>误分类的次数$k$具有上界,经过有限次搜索可以在线性可分数据集上寻找到将正负样本点完全分开的超平面,算法收敛,但是如果数据即不可分,算法将不收敛.<br>另一方面,感知机算法的解并不是唯一的,几何意义上可以明确表明这一点.</p>
 <h3 id="感知机学习算法的对偶形式"><a href="#感知机学习算法的对偶形式" class="headerlink" title="感知机学习算法的对偶形式"></a>感知机学习算法的对偶形式</h3><p>在感知机学习的原始算法之中,考虑数据的更新过程,可以发现,在正确分类的过程之中,对于参数$\omega$和$b$的值并不会发生变化,只有在发生误分类的时候才会更新参数,故而在初值设为$(0,0)$时,参数也可以表示为:</p>
