@@ -3,7 +3,7 @@
   <entry>
     <title>Perceptron</title>
     <url>/2021/07/18/Perceptron/</url>
-    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个由$X\in \mathbb{R}^n\to Y\in{-1,1}$的映射</p>
+    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个由$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射</p>
 ]]></content>
       <tags>
         <tag>统计学习方法</tag>
