@@ -4,23 +4,23 @@
     <title>Perceptron</title>
     <url>/2021/07/18/Perceptron/</url>
     <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
-<script type="math/tex; mode=display">f(x)</script>]]></content>
+<script type="math/tex; mode=display">f(x)=\text{sign}(w\cdot x+b)</script><p>从公式以及映射的定义域及值域来看,感知机是一个判别模型(二分类模型).感知机的目标是学习到一个分离超平面将所有目标点正确划分.<br><span id="more"></span></p>
+<h3 id="数据集的线性可分性"><a href="#数据集的线性可分性" class="headerlink" title="数据集的线性可分性"></a>数据集的线性可分性</h3><p>如果存在某个超平面,将数据集的正样本点与负样本点完全划分开,则称这个数据集是线性可分的.</p>
+<h3 id="感知机的学习策略"><a href="#感知机的学习策略" class="headerlink" title="感知机的学习策略"></a>感知机的学习策略</h3><p>损失函数的选择:<br>    误分类点的数目:直观,但是并不连续可导<br>    实际选择的损失函数:$M$为误分类的点的集合</p>
+<script type="math/tex; mode=display">L=-\sum_{x_i\in M}y_i(\omega\cdot x_i+b)</script><h3 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h3><p>由损失函数可知:</p>
+<script type="math/tex; mode=display">\nabla_\omega L(\omega,b)=-\sum_{x_i\in M}y_ix_i</script><script type="math/tex; mode=display">\nabla_b L(\omega,b)=-\sum_{x_i\in M}y_i</script><p>故参数更新方法为(梯度下降):</p>
+<script type="math/tex; mode=display">\omega\leftarrow\omega + \eta y_ix_i</script><script type="math/tex; mode=display">b\leftarrow b+\eta y_i</script><p>几何意义上来看,是不断调整超平面位置向误分类点移动的过程.</p>
+<h3 id="感知机学习算法的收敛性"><a href="#感知机学习算法的收敛性" class="headerlink" title="感知机学习算法的收敛性"></a>感知机学习算法的收敛性</h3><p>误分类的次数$k$具有上界,经过有限次搜索可以在线性可分数据集上寻找到将正负样本点完全分开的超平面,算法收敛,但是如果数据即不可分,算法将不收敛.<br>另一方面,感知机算法的解并不是唯一的,几何意义上可以明确表明这一点.</p>
+<h3 id="感知机学习算法的对偶形式"><a href="#感知机学习算法的对偶形式" class="headerlink" title="感知机学习算法的对偶形式"></a>感知机学习算法的对偶形式</h3><p>在感知机学习的原始算法之中,考虑数据的更新过程,可以发现,在正确分类的过程之中,对于参数$\omega$和$b$的值并不会发生变化,只有在发生误分类的时候才会更新参数,故而在初值设为$(0,0)$时,参数也可以表示为:</p>
+<script type="math/tex; mode=display">\omega=\sum_{i=1}^{N}n_i\eta y_ix_i</script><script type="math/tex; mode=display">b=\sum_{i=1}^{N}n_i\eta y_i</script><p>记$\alpha_i=n_i\eta$,问题可以转化为学习$\alpha_i$与$b$<br>注意到将$\omega$表示为$y_ix_i$的线性组合之后,$\forall x_i,x_j$在表达式之中均以内积的形式出现,故而,可以采用Gram矩阵存储内积:</p>
+<script type="math/tex; mode=display">\bf{G}=[x_i\cdot x_j]_{N\times N}</script><p>相当于以空间换时间.</p>
+<h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3><ul>
+<li>超平面<br>超平面是指在$n$维线性空间之中维度为$n-1$的子空间,超平面将$n$维空间划分为不相交的两部分.<br>设某一过原点平面的法向量为$\omega$,该平面上由原点出发的任一向量为$x$,那么由法向量的定义:<script type="math/tex; mode=display">\omega\cdot x=0</script>当平面沿法向量方向平移之后,向量$x$的终点也随之平移,此时$x$不再属于原平面,故而$\omega\cdot x\neq 0$,<br>假设点$x_0$在平移后的平面内,那么$\overrightarrow{xx_0}$在平面内,而$\overrightarrow{xx_0}=\overrightarrow{Ox_0}-\overrightarrow{Ox}$,所以:<script type="math/tex; mode=display">\omega\cdot(x_0-x)=0</script>即:<script type="math/tex; mode=display">\omega\cdot x-\omega\cdot x_0=0</script>记$-\omega\cdot x_0=b$,即可得到超平面方程:<script type="math/tex; mode=display">\omega\cdot x+b=0</script>从推导过程可以看出,平面过原点的条件并不是必要的,过原点的条件一方面简化了向量的表示,另一方面原点在构造平移后的平面内的向量过程之中起到了桥梁作用.</li>
+<li>超平面外一点到超平面的距离<br>设点$x$在超平面$\omega x+b=0$内的投影为$x_0$,超平面内除$x_0$之外的任意一点(设为$x_1$),那么:<script type="math/tex; mode=display">\cos\theta=\frac{d}{\Vert x-x_1\Vert}</script>而:<script type="math/tex; mode=display">\vert(x-x_1)\omega\vert=\Vert x-x_1\Vert\cdot \Vert\omega\Vert\cdot\cos\theta</script>联立可得:<script type="math/tex; mode=display">d=\frac{1}{\Vert\omega\Vert}\cdot\vert \omega x+b\vert</script></li>
+</ul>
+]]></content>
       <tags>
         <tag>统计学习方法</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/06/04/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
