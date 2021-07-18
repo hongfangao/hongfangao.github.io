@@ -3,8 +3,8 @@
   <entry>
     <title>Perceptron</title>
     <url>/2021/07/18/Perceptron/</url>
-    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个由$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射</p>
-]]></content>
+    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
+<script type="math/tex; mode=display">f(x)</script>]]></content>
       <tags>
         <tag>统计学习方法</tag>
       </tags>
