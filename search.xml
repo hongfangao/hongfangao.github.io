@@ -3,7 +3,18 @@
   <entry>
     <title>Perceptron</title>
     <url>/2021/07/18/Perceptron/</url>
-    <content><![CDATA[<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
+    <content><![CDATA[<p><head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head></p>
+<h2 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h2><p>感知机是一个$X\in \mathbb{R}^n\to Y\in \{-1,1 \}$的映射,其中$x\in X$来自输入空间,感知机的前向传播公式可以定义为:</p>
 <script type="math/tex; mode=display">f(x)=\text{sign}(w\cdot x+b)</script><p>从公式以及映射的定义域及值域来看,感知机是一个判别模型(二分类模型).感知机的目标是学习到一个分离超平面将所有目标点正确划分.<br><span id="more"></span></p>
 <h3 id="数据集的线性可分性"><a href="#数据集的线性可分性" class="headerlink" title="数据集的线性可分性"></a>数据集的线性可分性</h3><p>如果存在某个超平面,将数据集的正样本点与负样本点完全划分开,则称这个数据集是线性可分的.</p>
 <h3 id="感知机的学习策略"><a href="#感知机的学习策略" class="headerlink" title="感知机的学习策略"></a>感知机的学习策略</h3><p>损失函数的选择:<br>    误分类点的数目:直观,但是并不连续可导<br>    实际选择的损失函数:$M$为误分类的点的集合</p>
