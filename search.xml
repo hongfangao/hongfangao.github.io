@@ -37,8 +37,8 @@
   <entry>
     <title>位运算</title>
     <url>/2021/07/20/%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
-    <content><![CDATA[<head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <content><![CDATA[<p><head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
@@ -47,6 +47,7 @@
             }
         });
     </script>
-</head>]]></content>
+</head></p>
+<h1 id="REMAIN-TO-BE-EDITED"><a href="#REMAIN-TO-BE-EDITED" class="headerlink" title="REMAIN TO BE EDITED"></a>REMAIN TO BE EDITED</h1>]]></content>
   </entry>
 </search>
