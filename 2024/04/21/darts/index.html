@@ -271,8 +271,7 @@
 <h3 id="决定网络performance的两个因素"><a href="#决定网络performance的两个因素" class="headerlink" title="决定网络performance的两个因素:"></a>决定网络performance的两个因素:</h3><p>结构建模: $\alpha$和网络权重: $\omega$</p>
 <p>$\omega$是随着$\alpha$确定的,即inner-loop优化$\omega$,outer-loop优化$\alpha$</p>
 <p>问题转化为:</p>
-<p>$\min_{\alpha}\quad\mathcal{L}_{val}(\omega^{\star}(\alpha),\alpha)$</p>
-<p>$\text{s.t.}\qquad \omega^{\star}(\alpha) &#x3D; \mathop{\arg\min}<em>{\omega} \mathcal{L}</em>{train}(\omega,\alpha)$</p>
+<p>$$\min_{\alpha}\quad\mathcal{L}<em>{val}(\omega^{\star}(\alpha),\alpha)$$<br>$$\text{s.t.}\qquad \omega^{\star}(\alpha) &#x3D; \mathop{\arg\min}</em>{\omega} \mathcal{L}_{train}(\omega,\alpha)$$</p>
 <p>实际上,交替进行:</p>
 <ul>
 <li>训练集上梯度下降优化权重</li>
