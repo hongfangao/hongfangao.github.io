@@ -17,7 +17,7 @@
 
 
 
-<title>大语言模型的压缩 | Welcome to Hongfan Gao&#39;s Personal Blog</title>
+<title>DARTS:Differentiable Architecture Search | Welcome to Hongfan Gao&#39;s Personal Blog</title>
 
 
 
@@ -156,7 +156,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        大语言模型的压缩
+        DARTS:Differentiable Architecture Search
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -224,7 +224,7 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        大语言模型的压缩
+        DARTS:Differentiable Architecture Search
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -235,12 +235,12 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>6 min</span>
+            <span>3 min</span>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>1.8k words</span>
+            <span>924 words</span>
           </span>
           
             <span class="text-gray-400">·</span>
@@ -255,98 +255,52 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <h2 id="Why-we-need-to-compress-LLMs"><a href="#Why-we-need-to-compress-LLMs" class="headerlink" title="Why we need to compress LLMs?"></a>Why we need to compress LLMs?</h2><p>LLM在多种任务上表现优异,这种优势的原因之一在于其巨大的参数量.</p>
-<p>以GPT-3 175B为例,其参数量高达1750亿,如果以FP16精度进行存储,在部署和推理阶段需要320GB内存,这使得LLM的部署和推理代价极高,难以实现广泛应用.为了实现LLM的应用,需要减少LLM的参数量,降低LLM的推理时内存占用与推理时间,所以需要对LLM进行模型压缩.</p>
-<h2 id="Methods-to-compress-LLMs"><a href="#Methods-to-compress-LLMs" class="headerlink" title="Methods to compress LLMs?"></a>Methods to compress LLMs?</h2><p>目标:</p>
+    <p>Published at ICLR 19’</p>
+<p>Arxiv: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1806.09055">1806.09055</a></p>
+<p>Code: <a target="_blank" rel="noopener" href="https://github.com/quark0/darts">Code URL</a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>将nas问题的搜索空间进行连续松弛,使得搜索空间连续化,即将问题转化为了可微的问题,进而使用梯度下降法进行优化,取得了速度优势.</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>根本难点之一:<br>    架构搜索被建模为离散空间上的黑箱优化问题,导致离散空间的优化很困难将搜索空间放宽到连续空间,这样可以使用梯度下降法,提升了搜索速度</p>
+<p>Darts对于整体空间进行连续化假设,并不限制于简单的conv filter或者分支结构,也不受限于特定的结构限制,即适用于卷积网络和循环网络.</p>
+<h2 id="DARTS"><a href="#DARTS" class="headerlink" title="DARTS"></a>DARTS</h2><h3 id="搜索空间建模"><a href="#搜索空间建模" class="headerlink" title="搜索空间建模"></a>搜索空间建模</h3><p>为每个模块寻找一个共同的essential building cell,cell顺序化堆叠即可获得卷积网络,循环堆叠获得RNN.</p>
+<p>每个cell建模为有$N$个节点的有向无环图,节点代表着隐式表示($x^{(i)}$), 边$(i,j)$代表了$i$到$j$的某种操作$o(i,j)$,</p>
+<p>假定cell有两个输入一个输出,对于卷积网络,输入节点为上一层的输出及上上层的输出,对于循环网络,输入节点为上一层的隐状态和上一层的输出,为了统一维度,中间有一些降维操作$x^{(j)} &#x3D; \sum_{i&lt;j}o^{(i,j)}(x^{(i)})$. 边的操作包含特殊的0操作(无链接)</p>
+<p>这样将模块内建模为对DAG中边的学习</p>
+<h3 id="连续松弛"><a href="#连续松弛" class="headerlink" title="连续松弛"></a>连续松弛</h3><p>$\mathcal{O}$代表着可能的操作集合:<br>$$\bar{o}^{i,j}(x)&#x3D;\sum_{o\in\mathcal{O}}\frac{\exp(\alpha_{o}^{i,j})}{\sum_{o^{\prime}\in\mathcal(O)}\exp(\alpha_{o^{\prime}}^{i,j})}o(x)$$</p>
+<p>可以看到这里引入了新的符号$\alpha_{o}^{i,j}$,其含义为:第$i$个特征图到第$j$个特征图之间的操作<br>$o(i,j)$的权重.这也是我们之后需要搜索的架构参数.</p>
+<p>举个例子,如果这个操作的权重$\alpha_{o}^{i,j}&#x3D;0$,那么就可以认为我们完全不需要这个操作.<br>$\alpha$对应着每个操作的权重,一旦$\alpha$确定,网络也就确定了</p>
+<h3 id="决定网络performance的两个因素"><a href="#决定网络performance的两个因素" class="headerlink" title="决定网络performance的两个因素:"></a>决定网络performance的两个因素:</h3><p>结构建模: $\alpha$和网络权重: $\omega$</p>
+<p>$\omega$是随着$\alpha$确定的,即inner-loop优化$\omega$,outer-loop优化$\alpha$</p>
+<p>问题转化为:</p>
+<p>$\min_{\alpha}\quad\mathcal{L}_{val}(\omega^{\star}(\alpha),\alpha)$</p>
+<p>$\text{s.t.}\qquad \omega^{\star}(\alpha) &#x3D; \mathop{\arg\min}<em>{\omega} \mathcal{L}</em>{train}(\omega,\alpha)$</p>
+<p>实际上,交替进行:</p>
 <ul>
-<li>使得模型在轻量级设备上可以存储运行,这里的轻量级设备包括个人级PC以及移动设备</li>
-<li>使得模型提升推理速度&#x2F;降低推理延迟</li>
-<li>实现速度、内存、表现的trade-off</li>
+<li>训练集上梯度下降优化权重</li>
+<li>val集上梯度下降优化网络结构</li>
 </ul>
-<p>阶段:</p>
-<ul>
-<li>推理优化</li>
-<li>训练优化</li>
-</ul>
-<p>方法:</p>
-<ul>
-<li>剪枝</li>
-<li>知识蒸馏</li>
-<li>模型量化</li>
-<li>低秩分解</li>
-</ul>
-<h3 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h3><p>剪枝方法可以视作移除网络中对于输出贡献较小的组件,可以减少存储需求,提高计算效率</p>
-<ol>
-<li><p>非结构化剪枝<br>非结构化剪枝在去除参数时没有考虑模型本身的结构,简单的说,可以认为单纯对每个参数的值进行评判,如果$\vert \text{value}\vert&lt; \text{threshold}$则将该参数的值置$0$.</p>
-<p> 非结构化剪枝存在的问题:</p>
-<ul>
-<li>没有考虑到模型的实际结构,以对卷积神经网络的剪枝为例,假设在一个$3\times 3$的卷积核之中某一参数绝对值很小,且其他的参数绝对值很大不可忽略,这会导致剪枝过程只将一个值置为$0$,模型之中会出现不规则的稀疏结构,需要额外设计结构对其进行存储,另一方面,同以卷积神经网络为例,即使将卷积核内的一个参数设为$0$,也要对整个卷积核进行运算,并没有降低运算量</li>
-<li>剪枝过后可能需要finetune,本身LLM的训练成本就很高,再进行finetune可能会造成更大的成本</li>
-</ul>
-<p> 对于LLM的非结构化剪枝的改进:</p>
-<ul>
-<li>实现无需finetune的非结构化剪枝</li>
-<li>调整参数重要性评判标准,不以数值作为评判标准,而是寻找一个更为合适的评判标准以提高非结构化剪枝的性能</li>
-</ul>
+<h3 id="近似计算优化"><a href="#近似计算优化" class="headerlink" title="近似计算优化"></a>近似计算优化</h3><p>一旦$\alpha$发生了更新,理应更新对应的$\omega$,这样会带来巨大的计算成本.</p>
+<p>先做近似:<br>$$\nabla_\alpha \mathcal{L}<em>{val}(w^*(\alpha), \alpha)\approx \nabla_\alpha \mathcal{L}</em>{val}(w - \xi \nabla_{w} \mathcal{L}_{train}(w, \alpha), \alpha)$$</p>
+<p>根据链式法则:</p>
+<p>$$\frac{\partial f}{\partial x} &#x3D; \frac{\partial f}{\partial g_1}\cdot\frac{\partial g_1}{\partial x} + \frac{\partial f}{\partial g_2}\cdot \frac{\partial g_2}{\partial x}+ \cdots +\frac{\partial f}{\partial g_n}\cdot \frac{\partial g_n}{\partial x} $$</p>
+<p>问题转化为化简:</p>
+<p>$$\nabla_\alpha \mathcal{L}<em>{val}(w’, \alpha) - \xi \nabla^2</em>{\alpha, w} \mathcal{L}<em>{train}(w, \alpha) \nabla</em>{w’} \mathcal{L}_{val}(w’, \alpha)$$</p>
+<h2 id="Thinkings"><a href="#Thinkings" class="headerlink" title="Thinkings"></a>Thinkings</h2><ol>
+<li><p>如何进行连续化建模是使得搜索空间可微的关键点之一,应该不限于超参数搜索,而是结构搜索也很关键,结构搜索如何连续化？</p>
 </li>
-<li><p>结构化剪枝<br> 在保持整体网络结构的情况下将部分连接或者分层结构移除,还是以卷积神经网络为例,相当于以卷积核为单位整体移除,这样不必为网络重新设计存储结构,并降低了内存占用和运算复杂度.                                                     </p>
+<li><p>超参数搜索如何连续化？</p>
 </li>
-<li><p>Conclusion</p>
-<p> 基于剪枝的llm压缩方法与基于剪枝的其他类型方法是基本一致的,重点在于对参数重要性的评估、预定义规则的设定以及如何避免重复训练llm</p>
+<li><p>本身就是一个经典的bi-level optimization问题,关键还是问题的建模方式,对于一个问题采用合适的建模方式是解决问题的第零步</p>
 </li>
-</ol>
-<h3 id="蒸馏"><a href="#蒸馏" class="headerlink" title="蒸馏"></a>蒸馏</h3><p>蒸馏方法是从复杂模型向简单模型转移知识的过程,对于LLM的蒸馏过程统一将LLM作为教师</p>
-<p>LLM模型相比于其他类型的模型,不同的一点是LLM模型具有“涌现能力”,即从原始训练数据中自动学习并发现新的、更高层次的特征和模式的能力.根据在蒸馏过程之中是否将涌现能力蒸馏到小语言模型进行分类,可以分为Standard KD和 EA-based KD.</p>
-<ul>
-<li>Standard KD:<br>  和普通的KD方法一致,只是将LLM作为教师</li>
-<li>EA-based KD<ul>
-<li>上下文学习（in-context learning, ICL）ICL采用了一个结构化的自然语言提示,其中包含任务描述和可能的一些演示示例.通过这些任务示例,LLM可以在不需要显式梯度更新的情况下掌握和执行新任务.</li>
-<li>思维链 (Chain of Thought, CoT) CoT与ICL相比,在提示中加入了中间推理步骤,这些步骤可以导致最终的输出,而不是使用简单的输入-输出对.</li>
-<li>指令跟随 (Instruction Following,IF) IF仅依赖于任务描述而不依赖于少量示例.通过使用一系列以指令形式表达的任务进行微调,语言模型展现出能够准确执行以前未见过的指令描述的任务的能力.</li>
-</ul>
-</li>
-</ul>
-<h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><p>在模型的存储过程之中,采用FP16&#x2F;FP32进行存储,所需要的内存空间较大,量化方法将复杂的浮点数存储转化为整除存储,如INT8&#x2F;INT4,量化的方法一定可以降低存储空间占用&#x2F;推理时内存占用,但是不一定能够实现加速.</p>
-<p>根据具体量化操作所在的步骤可以分为三种:</p>
-<ol>
-<li><p>Quantization-Aware Training</p>
-<p> 在训练阶段就开始进行量化,使得LLM适应低精度表示,可以在量化之后获得更好的性能.LLM-QAT利用预训练模型生成的结果来实现无数据蒸馏,不仅量化权重和激活,还量化键-值（Key-Value）缓存,并能够将带有量化权重和KV缓存的大型LLaMA模型蒸馏为仅有4位的模型.</p>
-</li>
-<li><p>Quantization-Aware Finetuning</p>
-<p> 在微调过程之中进行量化,确保LLM在微调之后对于任务仍保有较好的性能,是性能保留与节约内存的trade-off.</p>
-</li>
-<li><p>Post-Training Quantization</p>
-<p> 在训练之后对参数进行量化,减少LLM的存储和计算复杂性,实现简单高效,但是会带来精度上的降低.</p>
-</li>
-</ol>
-<p>对于量化问题,关键在于以下几点:</p>
-<ul>
-<li>权重参数的重要性评估,对于低影响力的参数,可以选择用低比特存储,除此之外,保护重要权重可以降低量化误差</li>
-<li>分层次-分级的量化,对于同一模型,在不同层上,其量化尺度也是不一样的,如何为合适的结果结构选取合适的量化尺度</li>
-<li>合适的量化方法,如何尽可能的保持性能</li>
-<li>量化的极限在哪里？可使用的最低比特是多少.</li>
-</ul>
-<h3 id="低秩分解"><a href="#低秩分解" class="headerlink" title="低秩分解"></a>低秩分解</h3><p>低秩分解将权重矩阵$\bm{W}$分解为两个矩阵的乘积:<br>$$W\in \mathbb{R}^{m\times n}\approx UV,U\in \mathbb{R}^{m\times k},V\in \mathbb{R}^{k\times n}, k\ll m,n$$<br>参数量由$mn$降低至$(m+n)k$.</p>
-<p>低秩分解的提出非常的晚,文章发布在ICLR 2022上,精度损失较小,常与其他方法共同使用</p>
-<h3 id="KV-Cache-Ensemble-learning"><a href="#KV-Cache-Ensemble-learning" class="headerlink" title="KV Cache &amp; Ensemble learning"></a>KV Cache &amp; Ensemble learning</h3><h3 id="Evaluation-Metrics"><a href="#Evaluation-Metrics" class="headerlink" title="Evaluation Metrics"></a>Evaluation Metrics</h3><ol>
-<li>Params: 参数量</li>
-<li>Model Size: 模型大小,考虑到量化方法的存在,模型大小和参数量并不完全等价</li>
-<li>Compression Ratio: 压缩比例</li>
-<li>Inference time: 完成推理所需要的时间</li>
-<li>FLOPs: 处理数据时所设计浮点操作数目 (FLoating Point Operations)</li>
-<li>FLOPS: 每秒完成的浮点操作数目(Floating Point Operations Per Second)</li>
-</ol>
-<h3 id="Future-Directions"><a href="#Future-Directions" class="headerlink" title="Future Directions"></a>Future Directions</h3><ol>
-<li>更为先进的大语言模型压缩方法,压缩的目标是实现速度,大小和精度的trade-off</li>
-<li>动态模型设计,即使用非手动设计的网络结构(如NAS)</li>
-<li>可解释性:设计可解释的LLM网络</li>
-<li>Task-specific llm</li>
 </ol>
 
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
     
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/NAS/">NAS</a>
+        </span>
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
           <a href="/tags/compression/">compression</a>
@@ -356,26 +310,17 @@
           <a href="/tags/report/">report</a>
         </span>
       
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/survey/">survey</a>
-        </span>
-      
     
   </div>
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2024/04/21/darts/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          DARTS:Differentiable Architecture Search
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2024/04/21/timesnet/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          TimesNet:Temporal 2D-Variation Modeling for General Time Series Analysis
+        <a href="/2024/04/21/llmcompression/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          大语言模型的压缩
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
