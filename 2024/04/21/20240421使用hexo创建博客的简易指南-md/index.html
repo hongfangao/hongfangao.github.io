@@ -234,7 +234,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>570 words</span>
+            <span>623 words</span>
           </span>
           
         </section>
@@ -272,12 +272,16 @@
 </li>
 </ul>
 <h2 id="将博客发布到github-pages"><a href="#将博客发布到github-pages" class="headerlink" title="将博客发布到github pages"></a>将博客发布到github pages</h2><ul>
-<li>在个人github建立名为[$USERNAME.github.io]的仓库</li>
+<li>在个人github建立名为<strong>USERNAME.github.io</strong>的仓库</li>
 <li>安装<strong>hexo-deployer</strong>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
 <li>修改_config.yml文件:  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">git@github.com:$USERNAME/$USERNAME.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure></li>
-<li>顺序执行下列命令,实现页面的生成与部署:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></li>
+<li>顺序执行下列命令,实现页面的生成与部署:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment">#清除缓存</span></span><br><span class="line">$ hexo g <span class="comment">#生成页面</span></span><br><span class="line">$ hexo d <span class="comment">#部署页面</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="博客内容的撰写"><a href="#博客内容的撰写" class="headerlink" title="博客内容的撰写"></a>博客内容的撰写</h2>
+<h2 id="博客内容的撰写"><a href="#博客内容的撰写" class="headerlink" title="博客内容的撰写"></a>博客内容的撰写</h2><ul>
+<li>使用如下命令建立一篇新的博客:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="variable">$BLOGNAME</span></span><br></pre></td></tr></table></figure></li>
+<li>hexo支持markdown语法, 在完成新建之后就可以快乐的写博客了!</li>
+</ul>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
