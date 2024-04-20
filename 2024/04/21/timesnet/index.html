@@ -240,7 +240,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>667 words</span>
+            <span>674 words</span>
           </span>
           
             <span class="text-gray-400">·</span>
@@ -255,36 +255,54 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p>Published at ICLR 23’</p>
-<p>Arxiv: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.02186v3">2210.02186v3</a></p>
+    <p>Published at ICLR 23'</p>
+<p>Arxiv: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.02186v3">2210.02186v3</a></p>
 <p>Code: <a target="_blank" rel="noopener" href="https://github.com/thuml/TimesNet">Code URL</a></p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>时序任务的核心:建模时序变化关系</p>
-<p>现有方法</p>
-<ul>
-<li>RNN:长程建模能力不足</li>
-<li>TCN:同RNN,关注的是近邻时刻的变化,长程建模能力不足</li>
-<li>Transformer: 仅仅依赖离散时间点之间的注意力难以挖掘出好的时序依赖关系</li>
-</ul>
-<p>本文的建模方式:multi-periodcity, 即多周期性,对于多周期性的motivation来自多个方面:</p>
-<ul>
-<li>现实世界的时序数据来自多个方面的数据叠加:短时数据与长时数据,在对数据进行分析时,既要分析其在短周期中的性质,也要分析其在长周期上的性质,天然的具有多周期属性</li>
-<li>对于某个特定过程,内部的变化不仅与内部有关,而且也与外部有关,即分析两种相关性:<ul>
-<li>Inter-period</li>
-<li>Intra-period</li>
-</ul>
-</li>
-</ul>
-<h2 id="Contribution-1"><a href="#Contribution-1" class="headerlink" title="Contribution #1"></a>Contribution #1</h2><p>Modelling inter-period and intra-period features:</p>
-<p>将原有的一维时间序列二维化,在一个维度内建模inter-period信息,在另一个维度内建模intra-period的信息,即将问题的维度进行转化:<br>$$1\times N\to \frac{N}{t}\times t$$<br>对于不同的时间序列,$t$的选择也应该不同,即是对于时间自适应的,本文采取的解决方案是对每个序列进行计算获得一个内部周期$t$.</p>
-<p>具体步骤如下:<br>对于序列$X\in \mathbb{R}^{T\times C}$,先进行FFT,再计算$C$个参数维度上的振幅均值,在$\frac{T}{2}$个振幅均值之中选取$k$个最大值,振幅代表着该频率的强度,所以选取频率强度最强的$k$个频率作为周期,将原有序列”折叠”,总结为:<br>$$\bm{X}<em>{2D}^{i}&#x3D;\text{Reshape}</em>{p_i,f_i}(\text{Padding}(\bm{X}_{1D}),i\in{1,2,\cdots,k}$$</p>
-<h2 id="Contribution-2"><a href="#Contribution-2" class="headerlink" title="Contribution #2"></a>Contribution #2</h2><p>Basic block: timesblock<br>timesblock内部<br>采用一种$1D\to 2D\to 1D$的建模方式,中间的backbone模块选择一个shared inception block<br>$1D \to 2D$:上面介绍的方式</p>
-<p>$2D$内部:<br>Shared-inception block减少参数量,使得model size与$k$无关</p>
-<p>$2D\to 1D$:</p>
-<ol>
-<li>Trunc 分解</li>
-<li>Adaptive aggregation做下层输入<br>$$\hat{A}<em>{f_1}^{l-1},\hat{A}</em>{f_2}^{l-1},\cdots,\hat{A}<em>{f_k}^{l-1}&#x3D;\text{Softmax}(A</em>{f_1}^{l-1},A_{f_2}^{l-1},\cdots,\hat{A}<em>{f_k}^{l-1})$$<br>$$X</em>{1D}^{l}&#x3D;\sum_{i&#x3D;1}^k\hat{A}<em>{f_i}^{l-1}\times \hat{X}</em>{1D}^{l,i}$$<br>timesblock之间采用residual连接由于转化成了2D,故而可以实现visual backbone的适配.</li>
-</ol>
-<h2 id="Remaining-Questions"><a href="#Remaining-Questions" class="headerlink" title="Remaining Questions"></a>Remaining Questions</h2><ol>
+<h2 id="问题分析">问题分析</h2>
+<p>时序任务的核心:建模时序变化关系</p>
+<p>现有方法 - RNN:长程建模能力不足 -
+TCN:同RNN,关注的是近邻时刻的变化,长程建模能力不足 - Transformer:
+仅仅依赖离散时间点之间的注意力难以挖掘出好的时序依赖关系</p>
+<p>本文的建模方式:multi-periodcity,
+即多周期性,对于多周期性的motivation来自多个方面: -
+现实世界的时序数据来自多个方面的数据叠加:短时数据与长时数据,在对数据进行分析时,既要分析其在短周期中的性质,也要分析其在长周期上的性质,天然的具有多周期属性
+-
+对于某个特定过程,内部的变化不仅与内部有关,而且也与外部有关,即分析两种相关性:
+- Inter-period - Intra-period</p>
+<h2 id="contribution-1">Contribution #1</h2>
+<p>Modelling inter-period and intra-period features:</p>
+<p>将原有的一维时间序列二维化,在一个维度内建模inter-period信息,在另一个维度内建模intra-period的信息,即将问题的维度进行转化:
+<span class="math display">\[1\times N\to \frac{N}{t}\times t\]</span>
+对于不同的时间序列,<span
+class="math inline">\(t\)</span>的选择也应该不同,即是对于时间自适应的,本文采取的解决方案是对每个序列进行计算获得一个内部周期<span
+class="math inline">\(t\)</span>.</p>
+<p>具体步骤如下: 对于序列<span class="math inline">\(X\in
+\mathbb{R}^{T\times C}\)</span>,先进行FFT,再计算<span
+class="math inline">\(C\)</span>个参数维度上的振幅均值,在<span
+class="math inline">\(\frac{T}{2}\)</span>个振幅均值之中选取<span
+class="math inline">\(k\)</span>个最大值,振幅代表着该频率的强度,所以选取频率强度最强的<span
+class="math inline">\(k\)</span>个频率作为周期,将原有序列"折叠",总结为:
+<span
+class="math display">\[{X}_{2D}^{i}=\text{Reshape}_{p_i,f_i}(\text{Padding}({X}_{1D}),i\in\{1,2,\cdots,k\}\]</span></p>
+<h2 id="contribution-2">Contribution #2</h2>
+<p>Basic block: timesblock timesblock内部 采用一种<span
+class="math inline">\(1D\to 2D\to 1D\)</span>的建模方式,中间的backbone模块选择一个shared
+inception block <span
+class="math inline">\(1D \to 2D\)</span>:上面介绍的方式</p>
+<p><span class="math inline">\(2D\)</span>内部: Shared-inception
+block减少参数量,使得model size与<span
+class="math inline">\(k\)</span>无关</p>
+<p><span class="math inline">\(2D\to 1D\)</span>: 1. Trunc 分解 2.
+Adaptive aggregation做下层输入 <span
+class="math display">\[\hat{A}_{f_1}^{l-1},\hat{A}_{f_2}^{l-1},\cdots,\hat{A}_{f_k}^{l-1}=\text{Softmax}(A_{f_1}^{l-1},A_{f_2}^{l-1},\cdots,\hat{A}_{f_k}^{l-1})\]</span>
+<span
+class="math display">\[X_{1D}^{l}=\sum_{i=1}^k\hat{A}_{f_i}^{l-1}\times
+\hat{X}_{1D}^{l,i}\]</span>
+timesblock之间采用residual连接由于转化成了2D,故而可以实现visual
+backbone的适配.</p>
+<h2 id="remaining-questions">Remaining Questions</h2>
+<ol type="1">
 <li>最为关键的,还是序列建模与问题建模问题,是不是序列建模足够好,对于问题建模的需求就足够小？</li>
 </ol>
 
@@ -315,7 +333,7 @@
     </div>
     <div>
       
-        <a href="/2024/04/21/20240421%E4%BD%BF%E7%94%A8hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97-md/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="/2024/04/21/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%80%BB%E7%BB%93/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           搭建个人博客总结
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>

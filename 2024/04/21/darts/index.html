@@ -240,7 +240,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>924 words</span>
+            <span>927 words</span>
           </span>
           
             <span class="text-gray-400">·</span>
@@ -255,41 +255,83 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p>Published at ICLR 19’</p>
+    <p>Published at ICLR 19'</p>
 <p>Arxiv: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1806.09055">1806.09055</a></p>
 <p>Code: <a target="_blank" rel="noopener" href="https://github.com/quark0/darts">Code URL</a></p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>将nas问题的搜索空间进行连续松弛,使得搜索空间连续化,即将问题转化为了可微的问题,进而使用梯度下降法进行优化,取得了速度优势.</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>根本难点之一:<br>    架构搜索被建模为离散空间上的黑箱优化问题,导致离散空间的优化很困难将搜索空间放宽到连续空间,这样可以使用梯度下降法,提升了搜索速度</p>
-<p>Darts对于整体空间进行连续化假设,并不限制于简单的conv filter或者分支结构,也不受限于特定的结构限制,即适用于卷积网络和循环网络.</p>
-<h2 id="DARTS"><a href="#DARTS" class="headerlink" title="DARTS"></a>DARTS</h2><h3 id="搜索空间建模"><a href="#搜索空间建模" class="headerlink" title="搜索空间建模"></a>搜索空间建模</h3><p>为每个模块寻找一个共同的essential building cell,cell顺序化堆叠即可获得卷积网络,循环堆叠获得RNN.</p>
-<p>每个cell建模为有$N$个节点的有向无环图,节点代表着隐式表示($x^{(i)}$), 边$(i,j)$代表了$i$到$j$的某种操作$o(i,j)$,</p>
-<p>假定cell有两个输入一个输出,对于卷积网络,输入节点为上一层的输出及上上层的输出,对于循环网络,输入节点为上一层的隐状态和上一层的输出,为了统一维度,中间有一些降维操作$x^{(j)} &#x3D; \sum_{i&lt;j}o^{(i,j)}(x^{(i)})$. 边的操作包含特殊的0操作(无链接)</p>
+<h2 id="abstract">Abstract</h2>
+<p>将nas问题的搜索空间进行连续松弛,使得搜索空间连续化,即将问题转化为了可微的问题,进而使用梯度下降法进行优化,取得了速度优势.
+## Intro 根本难点之一:
+架构搜索被建模为离散空间上的黑箱优化问题,导致离散空间的优化很困难将搜索空间放宽到连续空间,这样可以使用梯度下降法,提升了搜索速度</p>
+<p>Darts对于整体空间进行连续化假设,并不限制于简单的conv
+filter或者分支结构,也不受限于特定的结构限制,即适用于卷积网络和循环网络.</p>
+<h2 id="darts">DARTS</h2>
+<h3 id="搜索空间建模">搜索空间建模</h3>
+<p>为每个模块寻找一个共同的essential building
+cell,cell顺序化堆叠即可获得卷积网络,循环堆叠获得RNN.</p>
+<p>每个cell建模为有<span
+class="math inline">\(N\)</span>个节点的有向无环图,节点代表着隐式表示(<span
+class="math inline">\(x^{(i)}\)</span>), 边<span
+class="math inline">\((i,j)\)</span>代表了<span
+class="math inline">\(i\)</span>到<span
+class="math inline">\(j\)</span>的某种操作<span
+class="math inline">\(o(i,j)\)</span>,</p>
+<p>假定cell有两个输入一个输出,对于卷积网络,输入节点为上一层的输出及上上层的输出,对于循环网络,输入节点为上一层的隐状态和上一层的输出,为了统一维度,中间有一些降维操作<span
+class="math inline">\(x^{(j)} = \sum_{i&lt;j}o^{(i,j)}(x^{(i)})\)</span>.
+边的操作包含特殊的0操作(无链接)</p>
 <p>这样将模块内建模为对DAG中边的学习</p>
-<h3 id="连续松弛"><a href="#连续松弛" class="headerlink" title="连续松弛"></a>连续松弛</h3><p>$\mathcal{O}$代表着可能的操作集合:<br>$$\bar{o}^{i,j}(x)&#x3D;\sum_{o\in\mathcal{O}}\frac{\exp(\alpha_{o}^{i,j})}{\sum_{o^{\prime}\in\mathcal(O)}\exp(\alpha_{o^{\prime}}^{i,j})}o(x)$$</p>
-<p>可以看到这里引入了新的符号$\alpha_{o}^{i,j}$,其含义为:第$i$个特征图到第$j$个特征图之间的操作<br>$o(i,j)$的权重.这也是我们之后需要搜索的架构参数.</p>
-<p>举个例子,如果这个操作的权重$\alpha_{o}^{i,j}&#x3D;0$,那么就可以认为我们完全不需要这个操作.<br>$\alpha$对应着每个操作的权重,一旦$\alpha$确定,网络也就确定了</p>
-<h3 id="决定网络performance的两个因素"><a href="#决定网络performance的两个因素" class="headerlink" title="决定网络performance的两个因素:"></a>决定网络performance的两个因素:</h3><p>结构建模: $\alpha$和网络权重: $\omega$</p>
-<p>$\omega$是随着$\alpha$确定的,即inner-loop优化$\omega$,outer-loop优化$\alpha$</p>
+<h3 id="连续松弛">连续松弛</h3>
+<p><span class="math inline">\(\mathcal{O}\)</span>代表着可能的操作集合:
+<span
+class="math display">\[\bar{o}^{i,j}(x)=\sum_{o\in\mathcal{O}}\frac{\exp(\alpha_{o}^{i,j})}{\sum_{o^{\prime}\in\mathcal(O)}\exp(\alpha_{o^{\prime}}^{i,j})}o(x)\]</span></p>
+<p>可以看到这里引入了新的符号<span
+class="math inline">\(\alpha_{o}^{i,j}\)</span>,其含义为:第<span
+class="math inline">\(i\)</span>个特征图到第<span
+class="math inline">\(j\)</span>个特征图之间的操作 <span
+class="math inline">\(o(i,j)\)</span>的权重.这也是我们之后需要搜索的架构参数.</p>
+<p>举个例子,如果这个操作的权重<span
+class="math inline">\(\alpha_{o}^{i,j}=0\)</span>,那么就可以认为我们完全不需要这个操作.
+<span
+class="math inline">\(\alpha\)</span>对应着每个操作的权重,一旦<span
+class="math inline">\(\alpha\)</span>确定,网络也就确定了</p>
+<h3
+id="决定网络performance的两个因素">决定网络performance的两个因素:</h3>
+<p>结构建模: <span class="math inline">\(\alpha\)</span>和网络权重:
+<span class="math inline">\(\omega\)</span></p>
+<p><span class="math inline">\(\omega\)</span>是随着<span
+class="math inline">\(\alpha\)</span>确定的,即inner-loop优化<span
+class="math inline">\(\omega\)</span>,outer-loop优化<span
+class="math inline">\(\alpha\)</span></p>
 <p>问题转化为:</p>
-<p>$$\min_{\alpha}\quad\mathcal{L}<em>{val}(\omega^{\star}(\alpha),\alpha)$$<br>$$\text{s.t.}\qquad \omega^{\star}(\alpha) &#x3D; \mathop{\arg\min}</em>{\omega} \mathcal{L}_{train}(\omega,\alpha)$$</p>
-<p>实际上,交替进行:</p>
-<ul>
-<li>训练集上梯度下降优化权重</li>
-<li>val集上梯度下降优化网络结构</li>
-</ul>
-<h3 id="近似计算优化"><a href="#近似计算优化" class="headerlink" title="近似计算优化"></a>近似计算优化</h3><p>一旦$\alpha$发生了更新,理应更新对应的$\omega$,这样会带来巨大的计算成本.</p>
-<p>先做近似:<br>$$\nabla_\alpha \mathcal{L}<em>{val}(w^*(\alpha), \alpha)\approx \nabla_\alpha \mathcal{L}</em>{val}(w - \xi \nabla_{w} \mathcal{L}_{train}(w, \alpha), \alpha)$$</p>
+<p><span
+class="math display">\[\min_{\alpha}\quad\mathcal{L}_{val}(\omega^{\star}(\alpha),\alpha)\]</span></p>
+<p><span class="math display">\[s.t.\qquad \omega^{\star}(\alpha) =
+\arg\min_{\omega} \mathcal{L}_{train}(\omega,\alpha)\]</span></p>
+<p>实际上,交替进行: - 训练集上梯度下降优化权重 -
+val集上梯度下降优化网络结构</p>
+<h3 id="近似计算优化">近似计算优化</h3>
+<p>一旦<span
+class="math inline">\(\alpha\)</span>发生了更新,理应更新对应的<span
+class="math inline">\(\omega\)</span>,这样会带来巨大的计算成本.</p>
+<p>先做近似: <span class="math display">\[\nabla_{\alpha}
+\mathcal{L}_{val}(w^*(\alpha), \alpha)\approx \nabla_{\alpha}
+\mathcal{L}_{val}(w - \xi \nabla_{w} \mathcal{L}_{train}(w, \alpha),
+\alpha)\]</span></p>
 <p>根据链式法则:</p>
-<p>$$\frac{\partial f}{\partial x} &#x3D; \frac{\partial f}{\partial g_1}\cdot\frac{\partial g_1}{\partial x} + \frac{\partial f}{\partial g_2}\cdot \frac{\partial g_2}{\partial x}+ \cdots +\frac{\partial f}{\partial g_n}\cdot \frac{\partial g_n}{\partial x} $$</p>
+<p><span class="math display">\[\frac{\partial f}{\partial
+x} = \frac{\partial f}{\partial g_1}\cdot\frac{\partial g_1}{\partial
+x} + \frac{\partial f}{\partial g_2}\cdot \frac{\partial g_2}{\partial
+x}+ \cdots +\frac{\partial f}{\partial g_n}\cdot \frac{\partial
+g_n}{\partial x} \]</span></p>
 <p>问题转化为化简:</p>
-<p>$$\nabla_\alpha \mathcal{L}<em>{val}(w’, \alpha) - \xi \nabla^2</em>{\alpha, w} \mathcal{L}<em>{train}(w, \alpha) \nabla</em>{w’} \mathcal{L}_{val}(w’, \alpha)$$</p>
-<h2 id="Thinkings"><a href="#Thinkings" class="headerlink" title="Thinkings"></a>Thinkings</h2><ol>
-<li><p>如何进行连续化建模是使得搜索空间可微的关键点之一,应该不限于超参数搜索,而是结构搜索也很关键,结构搜索如何连续化？</p>
-</li>
-<li><p>超参数搜索如何连续化？</p>
-</li>
-<li><p>本身就是一个经典的bi-level optimization问题,关键还是问题的建模方式,对于一个问题采用合适的建模方式是解决问题的第零步</p>
-</li>
+<p><span class="math display">\[\nabla_\alpha \mathcal{L}_{val}(w&#39;,
+\alpha) - \xi \nabla^2_{\alpha, w} \mathcal{L}_{train}(w, \alpha)
+\nabla_{w&#39;} \mathcal{L}_{val}(w&#39;, \alpha)\]</span></p>
+<h2 id="thinkings">Thinkings</h2>
+<ol type="1">
+<li><p>如何进行连续化建模是使得搜索空间可微的关键点之一,应该不限于超参数搜索,而是结构搜索也很关键,结构搜索如何连续化？</p></li>
+<li><p>超参数搜索如何连续化？</p></li>
+<li><p>本身就是一个经典的bi-level
+optimization问题,关键还是问题的建模方式,对于一个问题采用合适的建模方式是解决问题的第零步</p></li>
 </ol>
 
   </article>
