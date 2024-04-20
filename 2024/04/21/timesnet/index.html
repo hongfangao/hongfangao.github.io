@@ -17,7 +17,7 @@
 
 
 
-<title>Hongfan Gao&#39;s Personal Blog</title>
+<title>TimesNet:Temporal 2D-Variation Modeling for General Time Series Analysis | Hongfan Gao&#39;s Personal Blog</title>
 
 
 
@@ -156,7 +156,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        TimesNet:Temporal 2D-Variation Modeling for General Time Series Analysis
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -212,62 +212,215 @@
 </div>
 
   <main class="pt-14">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      Hongfan Gao&#39;s Personal Blog
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2024</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        TimesNet:Temporal 2D-Variation Modeling for General Time Series Analysis
+      </h1>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <span class="flex items-center gap-1">
+            <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
+            <time>2024-04-21</time>
+          </span>
+          <span class="text-gray-400">·</span>
+          <span class="flex items-center gap-1">
+            <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
+            <span>2 min</span>
+          </span>
+          <span class="text-gray-400">·</span>
+          <span class="flex items-center gap-1">
+            <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
+            <span>674 words</span>
+          </span>
+          
+            <span class="text-gray-400">·</span>
+            <span class="flex items-center gap-1">
+              <iconify-icon width="16" icon="icon-park-outline:box" class="mr-2"></iconify-icon>
+              <a class="article-category-link" href="/categories/papers/">papers</a>
+            </span>
+          
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
+    <p>Published at ICLR 23’</p>
+<p>Arxiv: (2210.02186v3)[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.02186v3]">https://arxiv.org/abs/2210.02186v3]</a></p>
+<p>Code: (Code URL)[<a target="_blank" rel="noopener" href="https://github.com/thuml/TimesNet]">https://github.com/thuml/TimesNet]</a></p>
+<p>时序任务的核心:建模时序变化关系</p>
+<p>现有方法</p>
+<ul>
+<li>RNN:长程建模能力不足</li>
+<li>TCN:同RNN,关注的是近邻时刻的变化,长程建模能力不足</li>
+<li>Transformer: 仅仅依赖离散时间点之间的注意力难以挖掘出好的时序依赖关系</li>
+</ul>
+<p>本文的建模方式:multi-periodcity, 即多周期性,对于多周期性的motivation来自多个方面:</p>
+<ul>
+<li>现实世界的时序数据来自多个方面的数据叠加:短时数据与长时数据,在对数据进行分析时,既要分析其在短周期中的性质,也要分析其在长周期上的性质,天然的具有多周期属性</li>
+<li>对于某个特定过程,内部的变化不仅与内部有关,而且也与外部有关,即分析两种相关性:<ul>
+<li>Inter-period</li>
+<li>Intra-period</li>
+</ul>
+</li>
+</ul>
+<h2 id="Contribution-1"><a href="#Contribution-1" class="headerlink" title="Contribution #1"></a>Contribution #1</h2><p>Modelling inter-period and intra-period features:</p>
+<p>将原有的一维时间序列二维化,在一个维度内建模inter-period信息,在另一个维度内建模intra-period的信息,即将问题的维度进行转化:<br>$$1\times N\to \frac{N}{t}\times t$$<br>对于不同的时间序列,$t$的选择也应该不同,即是对于时间自适应的,本文采取的解决方案是对每个序列进行计算获得一个内部周期$t$.</p>
+<p>具体步骤如下:<br>对于序列$X\in \mathbb{R}^{T\times C}$,先进行FFT,再计算$C$个参数维度上的振幅均值,在$\frac{T}{2}$个振幅均值之中选取$k$个最大值,振幅代表着该频率的强度,所以选取频率强度最强的$k$个频率作为周期,将原有序列”折叠”,总结为:<br>$$\bm{X}<em>{2D}^{i}&#x3D;\text{Reshape}</em>{p_i,f_i}(\text{Padding}(\bm{X}_{1D}),i\in{1,2,\cdots,k}$$</p>
+<h2 id="Contribution-2"><a href="#Contribution-2" class="headerlink" title="Contribution #2"></a>Contribution #2</h2><p>Basic block: timesblock<br>timesblock内部<br>采用一种$1D\to 2D\to 1D$的建模方式,中间的backbone模块选择一个shared inception block<br>$1D \to 2D$:上面介绍的方式</p>
+<p>$2D$内部:<br>Shared-inception block减少参数量,使得model size与$k$无关</p>
+<p>$2D\to 1D$:</p>
+<ol>
+<li>Trunc 分解</li>
+<li>Adaptive aggregation做下层输入<br>$$\hat{A}<em>{f_1}^{l-1},\hat{A}</em>{f_2}^{l-1},\cdots,\hat{A}<em>{f_k}^{l-1}&#x3D;\text{Softmax}(A</em>{f_1}^{l-1},A_{f_2}^{l-1},\cdots,\hat{A}<em>{f_k}^{l-1})$$<br>$$X</em>{1D}^{l}&#x3D;\sum_{i&#x3D;1}^k\hat{A}<em>{f_i}^{l-1}\times \hat{X}</em>{1D}^{l,i}$$<br>timesblock之间采用residual连接由于转化成了2D,故而可以实现visual backbone的适配.</li>
+</ol>
+<h2 id="Remaining-Questions"><a href="#Remaining-Questions" class="headerlink" title="Remaining Questions"></a>Remaining Questions</h2><ol>
+<li>最为关键的,还是序列建模与问题建模问题,是不是序列建模足够好,对于问题建模的需求就足够小？</li>
+</ol>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a style="--stagger:0" href="/2024/04/21/timesnet/" data-animate>
-      <header>
-        <h2 class="font-bold text-xl">
-          TimesNet:Temporal 2D-Variation Modeling for General Time Series Analysis
-        </h2>
-      </header>
-      <section class="text-gray-400 my-2 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          4月 21
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/timeseries-report/">timeseries, report</a>
+        </span>
+      
     
-    
-    <a style="--stagger:1" href="/2024/04/21/20240421%E4%BD%BF%E7%94%A8hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97-md/" data-animate>
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="/2024/04/21/20240421%E4%BD%BF%E7%94%A8hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97-md/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           使用hexo和GithubPages创建博客的简易指南
-        </h2>
-      </header>
-      <section class="text-gray-400 my-2 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          4月 21
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="/lib/clipboard.min.js"></script>
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="/lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="/lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  })
+</script>
+<!-- tocbot end -->
 
 
   </main>
