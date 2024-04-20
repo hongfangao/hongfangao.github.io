@@ -17,7 +17,7 @@
 
 
 
-<title>使用hexo和GithubPages创建博客的简易指南 | Welcome to Hongfan Gao&#39;s Personal Blog</title>
+<title>搭建个人博客总结 | Welcome to Hongfan Gao&#39;s Personal Blog</title>
 
 
 
@@ -156,7 +156,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        使用hexo和GithubPages创建博客的简易指南
+        搭建个人博客总结
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -224,7 +224,7 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        使用hexo和GithubPages创建博客的简易指南
+        搭建个人博客总结
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -235,18 +235,18 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>1 min</span>
+            <span>3 min</span>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>467 words</span>
+            <span>818 words</span>
           </span>
           
             <span class="text-gray-400">·</span>
             <span class="flex items-center gap-1">
               <iconify-icon width="16" icon="icon-park-outline:box" class="mr-2"></iconify-icon>
-              <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/">技术博客</a>
+              <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">课程报告</a>
             </span>
           
         </section>
@@ -255,13 +255,21 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p>本篇博客将简要分享如何使用<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>搭建自己的个人博客,并利用github pages进行展示.</p>
-<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境:"></a>系统环境:</h2><pre><code>- Windows 10
+    <p>本篇博客为将简要分享如何使用<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>搭建自己的个人博客,并利用github pages进行展示.</p>
+<h2 id="博客主题选择"><a href="#博客主题选择" class="headerlink" title="博客主题选择"></a>博客主题选择</h2><p>在本次搭建个人博客的过程之中,选取的搭建方式为<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>和github pages的结合实现, 选取hexo的原因是基于hexo的个人博客对于前端知识的要求较低,博文内容可以全部通过makrdown实现,而个人对于markdown相关语法较为熟悉,所以选择hexo+github pages的实现方式.</p>
+<p>博客主题选取了<a target="_blank" rel="noopener" href="https://github.com/xbmlz/hexo-theme-maple">maple</a>作为博客的主题, 选取该主题的原因包含如下几点:</p>
+<ul>
+<li>maple主题本身简约但又简单, 符合博主对于博客整体风格的要求</li>
+<li>maple主题由中文开发者开发, 对中文内容支持较好</li>
+<li>maple主题有较好的对移动端的支持, 在移动段也有较好的浏览效果</li>
+<li>maple主题支持dark&#x2F;light mode的切换, 并提供了数据分析的相关接口</li>
+</ul>
+<h2 id="使用hexo-GithubPages的博客部署功能实现"><a href="#使用hexo-GithubPages的博客部署功能实现" class="headerlink" title="使用hexo+GithubPages的博客部署功能实现"></a>使用hexo+GithubPages的博客部署功能实现</h2><h3 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境:"></a>系统环境:</h3><pre><code>- Windows 10
 - node v18.20.0
 - npm v10.5.0
 - git 2.44.0.windows.1
 </code></pre>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
 <li><p>安装node, 从<a target="_blank" rel="noopener" href="https://nodejs.org/en">nodejs官方网站</a>上进行下载安装.</p>
 <p>  在完成下载安装之后,检查是否成功安装:</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
@@ -288,17 +296,25 @@
 <p>  指定目标端口进行查看.</p>
 </li>
 </ul>
-<h2 id="将博客发布到github-pages"><a href="#将博客发布到github-pages" class="headerlink" title="将博客发布到github pages"></a>将博客发布到github pages</h2><ul>
+<h3 id="将博客发布到github-pages"><a href="#将博客发布到github-pages" class="headerlink" title="将博客发布到github pages"></a>将博客发布到github pages</h3><ul>
 <li>在个人github建立名为<strong>USERNAME.github.io</strong>的仓库</li>
 <li>安装<strong>hexo-deployer</strong>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
 <li>修改_config.yml文件:  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">git@github.com:$USERNAME/$USERNAME.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure></li>
 <li>顺序执行下列命令,实现页面的生成与部署:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment">#清除缓存</span></span><br><span class="line">$ hexo g <span class="comment">#生成页面</span></span><br><span class="line">$ hexo d <span class="comment">#部署页面</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="博客内容的撰写"><a href="#博客内容的撰写" class="headerlink" title="博客内容的撰写"></a>博客内容的撰写</h2><ul>
+<h3 id="博客内容的撰写"><a href="#博客内容的撰写" class="headerlink" title="博客内容的撰写"></a>博客内容的撰写</h3><ul>
 <li>使用如下命令建立一篇新的博客:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="variable">$BLOGNAME</span></span><br></pre></td></tr></table></figure></li>
 <li>hexo支持markdown语法, 在完成新建之后就可以在对应的markdown文件之中快乐的写博客了!</li>
 </ul>
-<h2 id="更换新的博客主题"><a href="#更换新的博客主题" class="headerlink" title="更换新的博客主题"></a>更换新的博客主题</h2><p>除了默认主题之外, 开源社区开发者们也为hexo提供了各种各样的主题选择, 具体可以参考hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a>进行选择!</p>
+<h3 id="更换新的博客主题"><a href="#更换新的博客主题" class="headerlink" title="更换新的博客主题"></a>更换新的博客主题</h3><p>除了默认主题之外, 开源社区开发者们也为hexo提供了各种各样的主题选择, 具体可以参考hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a>进行选择!</p>
+<h2 id="在搭建博客过程之中遇到的问题"><a href="#在搭建博客过程之中遇到的问题" class="headerlink" title="在搭建博客过程之中遇到的问题"></a>在搭建博客过程之中遇到的问题</h2><ul>
+<li><p>在localhost预览时可以实时预览成功对应的更改,但是部署到github之后则无法看到对应更改.</p>
+<p>  解决方案: 每次更新时都执行hexo -clean命令</p>
+</li>
+<li><p>config文件之中更改timezone配置之后无法实现配置</p>
+<p>  解决方案: timezone选项只支持特定的选项, 查阅相关资料之后设置为’Asia&#x2F;Shanghai’</p>
+</li>
+</ul>
 
   </article>
   <!-- tag -->
@@ -306,7 +322,15 @@
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/course/">course</a>
+        </span>
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
           <a href="/tags/blog/">blog</a>
+        </span>
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/hexo/">hexo</a>
         </span>
       
     
