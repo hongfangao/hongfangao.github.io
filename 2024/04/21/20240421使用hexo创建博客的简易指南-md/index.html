@@ -15,7 +15,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>使用hexo和GithubPages创建博客的简易指南 | Hexo</title>
 
 
 
@@ -154,7 +154,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Hello World
+        使用hexo和GithubPages创建博客的简易指南
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -218,7 +218,7 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Hello World
+        使用hexo和GithubPages创建博客的简易指南
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -229,12 +229,12 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>1 min</span>
+            <span>2 min</span>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>75 words</span>
+            <span>570 words</span>
           </span>
           
         </section>
@@ -243,20 +243,41 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+    <p>对于计算机专业博士生来说,建立个人博客是一个多赢的举措.它不仅为博士生提供了一个展示研究成果和学术见解的公共平台,而且有助于他们塑造个人品牌,提升在学术界的影响力.通过博客,博士生可以与同行进行深入交流,获取宝贵的反馈,这不仅能够促进他们研究工作的改进,还能帮助他们建立广泛的专业网络.此外,博客的写作过程本身也是对知识进行梳理和深化理解的有效手段,有助于提升博士生的研究能力和学术素养.同时,博客还可以作为求职和合作的窗口.长远来看,博士生通过博客积累的学术声誉和专业网络,对其未来的职业发展大有裨益.本篇博客将简要分享如何使用<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>搭建自己的个人博客,并利用github pages进行展示.</p>
+<h3 id="系统环境-Windows-10"><a href="#系统环境-Windows-10" class="headerlink" title="系统环境: Windows 10"></a>系统环境: Windows 10</h3><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li><p>安装node, 从<a target="_blank" rel="noopener" href="https://nodejs.org/en">nodejs官方网站</a>上进行下载安装.</p>
+<p>  在完成下载安装之后,检查是否成功安装:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<p>  应当输出对应的版本号.</p>
+</li>
+<li><p>安装git, 从<a target="_blank" rel="noopener" href="https://git-scm.com/">git官方网站</a>进行下载安装.</p>
+<p>  在完成下载安装之后,检查是否成功安装:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git -v</span><br></pre></td></tr></table></figure>
+<p>  应当输出对应的版本号</p>
+</li>
+<li><p>安装hexo</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用hexo建立静态博客</p>
+<p>  建立存放blog文件的文件夹</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> <span class="variable">$BLOG</span></span><br><span class="line">$ <span class="built_in">cd</span> <span class="variable">$BLOG</span></span><br></pre></td></tr></table></figure>
+<p>  hexo 初始化</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>  本地预览</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>  通常情况下, 服务将启动于本地的4000端口(<a target="_blank" rel="noopener" href="http://localhost:4000/),%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%E4%B8%8A%E8%BF%B0%E7%BD%91%E5%9D%80%E5%8D%B3%E5%8F%AF">http://localhost:4000/),在浏览器中访问上述网址即可</a>. 如果该端口被占用, 可先Ctrl+C关闭之后, 使用</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p <span class="variable">$PORTID</span></span><br></pre></td></tr></table></figure>
+<p>  指定目标端口进行查看.</p>
+</li>
+</ul>
+<h2 id="将博客发布到github-pages"><a href="#将博客发布到github-pages" class="headerlink" title="将博客发布到github pages"></a>将博客发布到github pages</h2><ul>
+<li>在个人github建立名为[$USERNAME.github.io]的仓库</li>
+<li>安装<strong>hexo-deployer</strong>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>修改_config.yml文件:  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">git@github.com:$USERNAME/$USERNAME.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure></li>
+<li>顺序执行下列命令,实现页面的生成与部署:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="博客内容的撰写"><a href="#博客内容的撰写" class="headerlink" title="博客内容的撰写"></a>博客内容的撰写</h2>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -266,13 +287,13 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2024/04/21/20240421%E4%BD%BF%E7%94%A8hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97-md/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          使用hexo和GithubPages创建博客的简易指南
-        </a>
-      
     </div>
     <div>
+      
+        <a href="/2024/04/21/hello-world/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Hello World
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
       
     </div>
   </div>
