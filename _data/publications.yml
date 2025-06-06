@@ -13,35 +13,42 @@ main:
     authors: Xingjian Wu, Xiangfei Qiu, <strong>Hongfan Gao</strong>, Jilin Hu, Bin Yang<span style="font-family:Wingdings">*</span>, Chenjuan Guo
     conferecnce_short: ICML
     conference: International Conference on Machine Learning, 2025
+    pdf: https://www.arxiv.org/pdf/2505.23017
     notes: spotlight
 
   - title: "MM-Path: Multi-modal, Multi-granularity Path Representation Learning"
     authors: Ronghui Xu, Hanyin Cheng, Chenjuan Guo, <strong>Hongfan Gao</strong>, Jilin Hu, Sean Bin Yang, Bin Yang<span style="font-family:Wingdings">*</span>
     conference_short: SIGKDD
     conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
+    pdf: https://arxiv.org/abs/2411.18428
   
   - title: "Path-LLM: A Multi-Modal Path Representation Learning by Aligning and Fusing with Large Language Models"
     authors: Yongfu Wei, Yan Lin, <strong>Hongfan Gao</strong>, Ronghui Xu, Sean Bin Yang, Jilin Hu<span style="font-family:Wingdings">*</span>
     conference_short: WWW
     conference: The World Wide Web Conference, 2025
+    pdf: https://dl.acm.org/doi/abs/10.1145/3696410.3714744
 
   - title: "Enhancing real-time super resolution with partial convolution and efficient variance attention"
     authors: Zhou Zhou, Jiahao Chao, Jiali Gong, <strong>Hongfan Gao</strong>, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>
     conference_short: ACM MM
     conference: ACM Multimedia, 2023
+    pdf: https://dl.acm.org/doi/abs/10.1145/3581783.3611729
   
   - title: "A novel learnable interpolation approach for scale-arbitrary image super-resolution"
     authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>
     conference_short: IJCAI
     conference: International Joint Conference on Artificial Intelligence, 2023
+    pdf: https://www.ijcai.org/proceedings/2023/0063.pdf
 
   - title: "Equivalent transformation and dual stream network construction for mobile image super-resolution"
     authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>, Lydia Dehbi
     conference_short: CVPR
     conference: IEEE Conference on Computer Vision and Pattern Recognition, 2023
+    pdf: https://openaccess.thecvf.com/content/CVPR2023/papers/Chao_Equivalent_Transformation_and_Dual_Stream_Network_Construction_for_Mobile_Image_CVPR_2023_paper.pdf
 
   - title: "Kernel estimation and deconvolution for blind image super-resolution"
     authors: Jiali Gong, Hongfan Gao, Jiahao Chao, Zhou Zhou, Zhengfeng Yang<span style="font-family:Wingdings">*</span>, Zhenbing Zeng
     conference_short: ICASSP
     conference: IEEE International Conference on Acoustics, Speech and Signal Processing, 2023
+    pdf: https://ieeexplore.ieee.org/abstract/document/10094753
 
