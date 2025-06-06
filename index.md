@@ -10,8 +10,8 @@ My research focuses on achieving end-to-end lightweight machine learning and dee
 
 ## Education
 - **Ph.D.**, School of Data Science and Engineering, East China Normal University, 2023-Present
-- **M.S.** , Software Engineering Insititue, East China Normal University, 2020-2023
-- **B.S.** , School of Information Science and Technology, East China Normal University, 2014-2018
+- **M.S.**, Software Engineering Insititue, East China Normal University, 2020-2023
+- **B.S.**, School of Information Science and Technology, East China Normal University, 2014-2018
 - Liaoning Province Shiyan High School, 2011-2014
 
 
