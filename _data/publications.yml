@@ -1,7 +1,7 @@
 main:
 
   - title: "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation"
-    authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu*
+    authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu<span style="font-family:Wingdings">*</span>
     conference_short: SIGKDD
     conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
     pdf: ./assets/files/SSD_TS.pdf
@@ -10,38 +10,38 @@ main:
     image: ./assets/img/ssd-ts.png
 
   - title: "$K^2$VAE: A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting"
-    authors: Xingjian Wu, Xiangfei Qiu, <strong>Hongfan Gao</strong>, Jilin Hu, Bin Yang, Chenjuan Guo
+    authors: Xingjian Wu, Xiangfei Qiu, <strong>Hongfan Gao</strong>, Jilin Hu, Bin Yang<span style="font-family:Wingdings">*</span>, Chenjuan Guo
     conferecnce_short: ICML
     conference: International Conference on Machine Learning, 2025
     note: spotlight
 
   - title: "MM-Path: Multi-modal, Multi-granularity Path Representation Learning"
-    authors: Ronghui Xu, Hanyin Cheng, Chenjuan Guo, <strong>Hongfan Gao</strong>, Jilin Hu, Sean Bin Yang, Bin Yang*
+    authors: Ronghui Xu, Hanyin Cheng, Chenjuan Guo, <strong>Hongfan Gao</strong>, Jilin Hu, Sean Bin Yang, Bin Yang<span style="font-family:Wingdings">*</span>
     conference_short: SIGKDD
     conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
   
   - title: "Path-LLM: A Multi-Modal Path Representation Learning by Aligning and Fusing with Large Language Models"
-    authors: Yongfu Wei, Yan Lin, <strong>Hongfan Gao</strong>, Ronghui Xu, Sean Bin Yang, Jilin Hu*
+    authors: Yongfu Wei, Yan Lin, <strong>Hongfan Gao</strong>, Ronghui Xu, Sean Bin Yang, Jilin Hu<span style="font-family:Wingdings">*</span>
     conference_short: WWW
     conference: The World Wide Web Conference, 2025
 
   - title: "Enhancing real-time super resolution with partial convolution and efficient variance attention"
-    authors: Zhou Zhou, Jiahao Chao, Jiali Gong, <strong>Hongfan Gao</strong>, Zhenbing Zeng, Zhengfeng Yang*
+    authors: Zhou Zhou, Jiahao Chao, Jiali Gong, <strong>Hongfan Gao</strong>, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>
     conference_short: ACM MM
     conference: ACM Multimedia, 2023
   
   - title: "A novel learnable interpolation approach for scale-arbitrary image super-resolution"
-    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang*
+    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>
     conference_short: IJCAI
     conference: International Joint Conference on Artificial Intelligence, 2023
 
   - title: "Equivalent transformation and dual stream network construction for mobile image super-resolution"
-    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang*, Lydia Dehbi
+    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang<span style="font-family:Wingdings">*</span>, Lydia Dehbi
     conference_short: CVPR
     conference: IEEE Conference on Computer Vision and Pattern Recognition, 2023
 
   - title: "Kernel estimation and deconvolution for blind image super-resolution"
-    authors: Jiali Gong, Hongfan Gao, Jiahao Chao, Zhou Zhou, Zhengfeng Yang*, Zhenbing Zeng
+    authors: Jiali Gong, Hongfan Gao, Jiahao Chao, Zhou Zhou, Zhengfeng Yang<span style="font-family:Wingdings">*</span>, Zhenbing Zeng
     conference_short: ICASSP
     conference: IEEE International Conference on Acoustics, Speech and Signal Processing, 2023
 
