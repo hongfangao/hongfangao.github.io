@@ -25,3 +25,23 @@ main:
     conference_short: WWW
     conference: The World Wide Web Conference, 2025
 
+  - title: "Enhancing real-time super resolution with partial convolution and efficient variance attention"
+    authors: Zhou Zhou, Jiahao Chao, Jiali Gong, <strong>Hongfan Gao</strong>, Zhenbing Zeng, Zhengfeng Yang*
+    conference_short: ACM MM
+    conference: ACM Multimedia, 2023
+  
+  - title: "A novel learnable interpolation approach for scale-arbitrary image super-resolution"
+    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang*
+    conference_short: IJCAI
+    conference: International Joint Conference on Artificial Intelligence, 2023
+
+  - title: "Equivalent transformation and dual stream network construction for mobile image super-resolution"
+    authors: Jiahao Chao, Zhou Zhou, <strong>Hongfan Gao</strong>, Jiali Gong, Zhenbing Zeng, Zhengfeng Yang*, Lydia Dehbi
+    conference_short: CVPR
+    conference: IEEE Conference on Computer Vision and Pattern Recognition, 2023
+
+  - title: "Kernel estimation and deconvolution for blind image super-resolution"
+    authors: Jiali Gong, Hongfan Gao, Jiahao Chao, Zhou Zhou, Zhengfeng Yang*, Zhenbing Zeng
+    conference_short: ICASSP
+    conference: IEEE International Conference on Acoustics, Speech and Signal Processing, 2023
+
