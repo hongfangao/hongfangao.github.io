@@ -2,8 +2,8 @@ main:
 
   - title: "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation"
     authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu* (*Corresponding authors)
-    conference_short: KDD
-    conference: KDD25: ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+    conference_short: SIGKDD
+    conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
     pdf: ./assets/files/SSD_TS.pdf
     code: https://github.com/hongfangao/SSD-TS
     # bibtex: https://bib.yliu.me/MICCAI23.txt
