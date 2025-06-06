@@ -7,13 +7,13 @@ main:
     pdf: ./assets/files/SSD_TS.pdf
     code: https://github.com/hongfangao/SSD-TS
     # bibtex: https://bib.yliu.me/MICCAI23.txt
-    image: ./assets/img/ssd-ts.png
+    # image: ./assets/img/ssd-ts.png
 
   - title: "$K^2$VAE: A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting"
     authors: Xingjian Wu, Xiangfei Qiu, <strong>Hongfan Gao</strong>, Jilin Hu, Bin Yang<span style="font-family:Wingdings">*</span>, Chenjuan Guo
     conferecnce_short: ICML
     conference: International Conference on Machine Learning, 2025
-    note: spotlight
+    notes: spotlight
 
   - title: "MM-Path: Multi-modal, Multi-granularity Path Representation Learning"
     authors: Ronghui Xu, Hanyin Cheng, Chenjuan Guo, <strong>Hongfan Gao</strong>, Jilin Hu, Sean Bin Yang, Bin Yang<span style="font-family:Wingdings">*</span>
