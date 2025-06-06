@@ -9,7 +9,7 @@
 
 <h4 style="margin:0 10px 0;">Teaching Experiences</h4>
 <ul style="margin:0 0 5px;">
-  <li>Teaching Assistant, <a href="https://github.com/hongfangao/Data_Platform"><autocolor>Data Platform</a>, Fall 2023,2024, Spring 2024,2025 Prof. <a href="https://hujilin1229.github.io"><autocolor>Jilin Hu</a></li>
+  <li>Teaching Assistant, <a href="https://github.com/hongfangao/Data_Platform"><autocolor>Data Platform</autocolor></a>, Fall 2023,2024, Spring 2024,2025 Prof. <a href="https://hujilin1229.github.io"><autocolor>Jilin Hu</autocolor></a></li>
 </ul>
 
 <!-- <h4 style="margin:0 10px 0;">Journal Reviewers</h4>
