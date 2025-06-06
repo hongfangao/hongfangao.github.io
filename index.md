@@ -4,7 +4,13 @@ layout: homepage
 
 ## About Me
 
-I am currently a second year Ph.D. student at [Decision Intelligence Lab](https://decisionintelligence.github.io/), [School of Data Science and Engineering (DaSE)](https://dase.ecnu.edu.cn/), [East China Normal University (ECNU)](https://www.ecnu.edu.cn/), supervised by Prof.[Jilin Hu](https://hujilin1229.github.io/). I completed my master degree from Sofware Engineering Insititue at ECNU in 2023, advised by Prof.[Zhengfeng Yang](https://scholar.google.ca/citations?user=jBDmZeQAAAAJ&hl=en). I received my bachelor degree from [East China Normal University](https://www.ecnu.edu.cn/) in 2018.
+I am currently a second year Ph.D. student at [Decision Intelligence Lab](https://decisionintelligence.github.io/), [School of Data Science and Engineering (DaSE)](https://dase.ecnu.edu.cn/), [East China Normal University (ECNU)](https://www.ecnu.edu.cn/), supervised by Prof.[Jilin Hu](https://hujilin1229.github.io/). 
+
+## Education
+- **Ph.D.**, East China Normal University, 2023-Present
+- **M.S.** , East China Normal University, 2020-2023
+- **B.S.** , East China Normal University, 2014-2018
+
 
 ## Research Interests
 
