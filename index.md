@@ -6,23 +6,26 @@ layout: homepage
 
 I am currently a second year Ph.D. student at [Decision Intelligence Lab](https://decisionintelligence.github.io/), [School of Data Science and Engineering (DaSE)](https://dase.ecnu.edu.cn/), [East China Normal University (ECNU)](https://www.ecnu.edu.cn/), supervised by Prof.[Jilin Hu](https://hujilin1229.github.io/). 
 
+My research focuses on achieving end-to-end lightweight machine learning and deep learning pipelines to support practical deployment on resource-constrained and edge devices and its applications to time series. I am also interested in related topics such as generative models, inference acceleration and model compression.
+
 ## Education
-- **Ph.D.**, East China Normal University, 2023-Present
-- **M.S.** , East China Normal University, 2020-2023
-- **B.S.** , East China Normal University, 2014-2018
+- **Ph.D.**, School of Data Science and Engineering , East China Normal University, 2023-Present
+- **M.S.** , Software Engineering Insititue, East China Normal University, 2020-2023
+- **B.S.** , School of Information Science and Technology ,East China Normal University, 2014-2018
+- Liaoning Province Shiyan High School, 2011-2014
 
 
 ## Research Interests
 
-- **Computer Vision:** image recognition, image generation, video captioning
-- **Machine Learning:** meta-learning, incremental learning, transfer learning
+- **Lightweight AI:** dataset distillation, inference acceleration, model compression, lightweight module design
+- **Generative AI:**  diffusion models, flow-based models
+- **LLMs:** compression and acceleration for LLMs
 
 ## News
 
-- **[Feb. 2020]** Our paper about incremental learning is accepted to CVPR 2020.
-- **[Feb. 2020]** We will host the ACM Multimedia Asia 2020 conference in Singapore!
-- **[Sept. 2019]** Our paper about few-shot learning is accepted to NeurIPS 2019.
-- **[Mar. 2019]** Our paper about few-shot learning is accepted to CVPR 2019.
+- **[Mar. 2025]** Our paper about state space models for diffusion models is accepted to SIGKDD 2025.
+- **[Mar. 2025]** Our paper about probabilistic time series forecasting is accepted to ICML 2025 (Spotlight).
+
 
 {% include_relative _includes/publications.md %}
 
