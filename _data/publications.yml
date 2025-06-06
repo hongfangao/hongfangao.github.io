@@ -1,11 +1,27 @@
 main:
 
   - title: "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation"
-    authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu* (*Corresponding authors)
+    authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu*
     conference_short: SIGKDD
     conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
     pdf: ./assets/files/SSD_TS.pdf
     code: https://github.com/hongfangao/SSD-TS
     # bibtex: https://bib.yliu.me/MICCAI23.txt
     image: ./assets/img/ssd-ts.png
+
+  - title: "$K^2$VAE: A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting"
+    authors: Xingjian Wu, Xiangfei Qiu, <strong>Hongfan Gao</strong>, Jilin Hu, Bin Yang, Chenjuan Guo
+    conferecnce_short: ICML
+    conference: International Conference on Machine Learning, 2025
+    note: spotlight
+
+  - title: "MM-Path: Multi-modal, Multi-granularity Path Representation Learning"
+    authors: Ronghui Xu, Hanyin Cheng, Chenjuan Guo, <strong>Hongfan Gao</strong>, Jilin Hu, Sean Bin Yang, Bin Yang*
+    conference_short: SIGKDD
+    conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2025
+  
+  - title: "Path-LLM: A Multi-Modal Path Representation Learning by Aligning and Fusing with Large Language Models"
+    authors: Yongfu Wei, Yan Lin, <strong>Hongfan Gao</strong>, Ronghui Xu, Sean Bin Yang, Jilin Hu*
+    conference_short: WWW
+    conference: The World Wide Web Conference, 2025
 

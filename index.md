@@ -18,7 +18,7 @@ My research focuses on achieving end-to-end lightweight machine learning and dee
 ## Research Interests
 
 - **Lightweight AI:** dataset distillation, inference acceleration, model compression, lightweight module design
-- **Generative AI:**  diffusion models, flow-based models
+- **Generative AI:**  diffusion models, flow-based models and its acceleration
 - **LLMs:** compression and acceleration for LLMs
 
 ## News
