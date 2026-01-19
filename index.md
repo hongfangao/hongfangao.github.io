@@ -23,6 +23,7 @@ My research focuses on achieving end-to-end lightweight machine learning and dee
 
 ## News
 
+- **[Jan. 2026]** Our paper about diffusion models and imputation is accepted to WWW 2026.
 - **[Mar. 2025]** Our paper about state space models for diffusion models is accepted to SIGKDD 2025.
 - **[Mar. 2025]** Our paper about probabilistic time series forecasting is accepted to ICML 2025 (Spotlight).
 
