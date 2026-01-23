@@ -1,4 +1,9 @@
 main:
+  - title: "FSDI: Frequency-Shaped Diffusion For Time-Series Imputation"
+    authors: Wangmeng Shen, <strong>Hongfan Gao</strong>, Qingsong Zhong, Dingli Xu, Jilin Hu<span style="font-family:Wingdings">*</span>
+    conference_short: WWW
+    conference: The World Wide Web Conference, 2026
+    
 
   - title: "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation"
     authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu<span style="font-family:Wingdings">*</span>
