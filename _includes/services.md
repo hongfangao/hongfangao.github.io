@@ -4,8 +4,8 @@
 
 <ul style="margin:0 0 5px;">
   <li><a href="https://icml.cc/"><autocolor>International Conference on Machine Learning (ICML), 2026</autocolor></a></li>
-  <li><a href="https://iclr.cc/"><autocolor>International Conference on Learning Representations (ICLR), 2026</autocolor></a></li>
   <li><a href="https://kdd.org/"><autocolor>ACM SIGKDD Conference on Knowledge Discovery and Data Mining (SIGKDD), 2025, 2026</autocolor></a></li>
+  <li><a href="https://iclr.cc/"><autocolor>International Conference on Learning Representations (ICLR), 2026</autocolor></a></li>
   <li><a href="https://2024.acmmm.org/"><autocolor>ACM Multimedia (ACM MM) 2024</autocolor></a></li>
 </ul>
 
