@@ -1,6 +1,6 @@
 main:
   - title: "PolarFormer: Radial-Angular Latent Modeling for Unconditional Time Series Generation"
-    authors: Jiahong Lyu, <strong>Hongfan Gao</strong>, Wangmeng Shen, Qingsong Zhong, Jilin Hu<span style="font-family:Wingdings">*</span>
+    authors: Jiahong Lyu*, <strong>Hongfan Gao*</strong>, Wangmeng Shen, Qingsong Zhong, Jilin Hu<span style="font-family:Wingdings">*</span>
     conference_short: SIGKDD
     conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2026
 
