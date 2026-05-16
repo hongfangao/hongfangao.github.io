@@ -1,9 +1,13 @@
 main:
+  - title: "PolarFormer: Radial-Angular Latent Modeling for Unconditional Time Series Generation"
+    authors: Jiahong Lyu, <strong>Hongfan Gao</strong>, Wangmeng Shen, Qingsong Zhong, Jilin Hu<span style="font-family:Wingdings">*</span>
+    conference_short: SIGKDD
+    conference: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, 2026
+
   - title: "FSDI: Frequency-Shaped Diffusion For Time-Series Imputation"
     authors: Wangmeng Shen, <strong>Hongfan Gao</strong>, Qingsong Zhong, Dingli Xu, Jilin Hu<span style="font-family:Wingdings">*</span>
     conference_short: WWW
     conference: The World Wide Web Conference, 2026
-    
 
   - title: "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation"
     authors: <strong>Hongfan Gao</strong>, Wangmeng Shen, Xiangfei Qiu, Ronghui Xu, Bin Yang, Jilin Hu<span style="font-family:Wingdings">*</span>
