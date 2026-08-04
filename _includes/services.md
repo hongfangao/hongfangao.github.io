@@ -3,8 +3,10 @@
 <h4 style="margin:0 10px 0;">Conference Reviewers</h4>
 
 <ul style="margin:0 0 5px;">
+  <li><a href="https://aaai.org/conference/aaai/aaai-27/"><autocolor>The 41st Annual AAAI Conference on Artificial Intelligence (AAAI), 2027</autocolor></a></li>
+  <li><a href="https://neurips.cc/Conferences/2026"><autocolor>The Fortieth Annual Conference on Neural Information Processing Systems (NeurIPS), 2026</autocolor></a></li>
   <li><a href="https://icml.cc/"><autocolor>International Conference on Machine Learning (ICML), 2026</autocolor></a></li>
-  <li><a href="https://kdd.org/"><autocolor>ACM SIGKDD Conference on Knowledge Discovery and Data Mining (SIGKDD), 2025, 2026</autocolor></a></li>
+  <li><a href="https://kdd.org/"><autocolor>ACM SIGKDD Conference on Knowledge Discovery and Data Mining (SIGKDD), 2025, 2026, 2027</autocolor></a></li>
   <li><a href="https://iclr.cc/"><autocolor>International Conference on Learning Representations (ICLR), 2026</autocolor></a></li>
   <li><a href="https://2024.acmmm.org/"><autocolor>ACM Multimedia (ACM MM) 2024</autocolor></a></li>
 </ul>
