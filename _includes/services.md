@@ -3,11 +3,12 @@
 <h4 style="margin:0 10px 0;">Conference Reviewers</h4>
 
 <ul style="margin:0 0 5px;">
+  <li><a href="https://thewebconf.org/"><autocolor>The Web Conference 2027</autocolor></a></li>
   <li><a href="https://aaai.org/conference/aaai/"><autocolor>Annual AAAI Conference on Artificial Intelligence (AAAI), 2027</autocolor></a></li>
   <li><a href="https://neurips.cc/"><autocolor>Annual Conference on Neural Information Processing Systems (NeurIPS), 2026</autocolor></a></li>
   <li><a href="https://icml.cc/"><autocolor>International Conference on Machine Learning (ICML), 2026</autocolor></a></li>
   <li><a href="https://kdd.org/"><autocolor>ACM SIGKDD Conference on Knowledge Discovery and Data Mining (SIGKDD), 2025, 2026, 2027</autocolor></a></li>
-  <li><a href="https://iclr.cc/"><autocolor>International Conference on Learning Representations (ICLR), 2026</autocolor></a></li>
+  <li><a href="https://iclr.cc/"><autocolor>International Conference on Learning Representations (ICLR), 2026, 2027</autocolor></a></li>
   <li><a href="https://2024.acmmm.org/"><autocolor>ACM Multimedia (ACM MM) 2024</autocolor></a></li>
 </ul>
 
@@ -21,10 +22,3 @@
 <ul style="margin:0 0 5px;">
   <li>Teaching Assistant, <a href="https://github.com/hongfangao/Data_Platform"><span style="color: #1A73E8">Data Platform</span></a>, Fall 2023,2024, Spring 2024,2025,2026 (for full-time and part-time postgraduate students) Prof. <a href="https://hujilin1229.github.io"><span style="color: #1A73E8">Jilin Hu</span></a></li>
 </ul>
-
-<!-- <h4 style="margin:0 10px 0;">Journal Reviewers</h4>
-
-<ul style="margin:0 0 20px;">
-  <li><a href="https://www.computer.org/csdl/journal/tp"><autocolor>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</autocolor></a></li>
-  <li><a href="https://www.springer.com/journal/11263"><autocolor>International Journal of Computer Vision (IJCV)</autocolor></a></li>
-</ul> -->

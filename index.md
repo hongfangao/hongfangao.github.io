@@ -25,6 +25,7 @@ My research focuses on achieving end-to-end lightweight machine learning and dee
 
 ## News
 
+- **[Sep. 2026]** Our paper about diffusion models and imputation is accepted to NeurIPS 2026.
 - **[May. 2026]** Our paper about time series generation is accepted to SIGKDD 2026.
 - **[Jan. 2026]** Our paper about diffusion models and imputation is accepted to WWW 2026.
 - **[Mar. 2025]** Our paper about state space models for diffusion models is accepted to SIGKDD 2025.
